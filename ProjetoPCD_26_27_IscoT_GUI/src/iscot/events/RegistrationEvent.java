@@ -4,12 +4,8 @@ import iscot.enums.Areas;
 import iscot.enums.Type;
 
 public class RegistrationEvent extends Event {
-    private Type type;
 
     public RegistrationEvent(Areas area, Type type) {
-        super(area);
-        this.type = type;
+        super(area, type);
     }
-
-    public Type getType() { return type; }
 }
