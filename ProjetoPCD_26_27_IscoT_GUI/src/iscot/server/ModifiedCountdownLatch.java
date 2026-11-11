@@ -7,8 +7,8 @@ public class ModifiedCountdownLatch {
     public synchronized void countdown() {
 
     }
-    public synchronized void await(int waitPeriod) {
-        throws InterruptedException ;
+    public synchronized void await(int waitPeriod) throws InterruptedException {
+
     }
 
 }
