@@ -9,6 +9,6 @@ public class LightSensorEvent extends SensorEvent {
 
     @Override
     public String toString() {
-        return super.toString() + " - Luz: " + getValue() + "%";
+        return super.toString() + " - Luz: " + getValue() + " lux";
     }
 }
