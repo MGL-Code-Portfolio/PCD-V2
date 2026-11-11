@@ -4,6 +4,7 @@ import iscot.enums.Areas;
 
 public class AreaLightingOrderEvent extends HighLevelOrderEvent {
     private boolean isOn;
+
     public AreaLightingOrderEvent(Areas area, boolean isOn) {
         super(area);
         this.isOn = isOn;
