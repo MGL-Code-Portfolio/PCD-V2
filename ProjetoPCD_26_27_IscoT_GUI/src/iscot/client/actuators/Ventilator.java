@@ -1,59 +1,55 @@
+
 package iscot.client.actuators;
 
-import java.awt.BorderLayout;
-import java.io.IOException;
-import java.net.UnknownHostException;
+import javax.swing.JComponent;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import iscot.gui.VentilatorIcon;
 import iscot.enums.Areas;
+import iscot.gui.VentilatorIcon;
 
 public class Ventilator extends Actuator {
 
-	/**
-	 * 
-	 * @param server address and port
-	 * @param roomName: string
-	 * @throws IOException 
-	 * @throws UnknownHostException 
-	 * @throws NumberFormatException 
-	 * @throws InterruptedException 
-	 * @throws ClassNotFoundException 
-	 */
-	public static void main(String[] args) throws NumberFormatException, UnknownHostException, IOException, InterruptedException, ClassNotFoundException {
-		if(args.length!=3) {
+	private VentilatorIcon ventilator;
+
+	public Ventilator(String serverAddress,
+					  int serverPort,
+					  Areas area) {
+		super(serverAddress, serverPort, area);
+	}
+
+	@Override
+	protected JComponent createComponent() {
+		ventilator = new VentilatorIcon();
+		return ventilator;
+	}
+
+	@Override
+	protected String getActuatorName() {
+		return "Ventilador";
+	}
+
+	@Override
+	protected void simulate() {
+		ventilator.setAtivo(true);
+		ventilator.repaint();
+
+		System.out.println("Ventilador ligado");
+	}
+
+	public static void main(String[] args) {
+
+		if (args.length != 3) {
 			System.err.println("Invalid arguments!");
+			return;
 		}
-		else {
-			// TODO connect to server
-			
-			// TODO register with the server
-			Areas area=Areas.valueOf(args[2]);
-			
-			JFrame janela = new JFrame("Ventilador em "+area);
-			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		
-			
-			// Criar os componentes gráficos
-			JPanel painel=new JPanel();
-			painel.setLayout(new BorderLayout());
-			VentilatorIcon ventilator = new VentilatorIcon();
-			painel.add(ventilator,BorderLayout.CENTER);
-			janela.setContentPane(painel);
-			janela.setLocation(600, 400);
-			janela.setMinimumSize(janela.getSize());
-			janela.pack();
-			janela.setVisible(true);
-			
-			Thread.sleep(5000);
-			ventilator.setAtivo(true);
+		Areas area = Areas.valueOf(args[2]);
 
-			// TODO: receive and handle messages from server
-			
-			// TODO: for first phase: create an appropriate event hardcoded locally and change the GUI accordingly
-		}
+		Ventilator ventilator = new Ventilator(
+				args[0],
+				Integer.parseInt(args[1]),
+				area
+		);
+
+		ventilator.createGUI();
 	}
 }
