@@ -1,4 +1,4 @@
 package iscot.client.sensors;
 
-public class TemperatureSensor extends Sensor{
+public class TemperatureSensor extends Sensor {
 }

@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import iscot.gui.SensorControl;
+import iscot.client.gui.SensorControl;
 import iscot.enums.Areas;
 
 public class HumiditySensor extends Sensor {
