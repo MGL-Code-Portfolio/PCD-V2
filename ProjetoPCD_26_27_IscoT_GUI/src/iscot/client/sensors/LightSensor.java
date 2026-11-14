@@ -15,7 +15,6 @@ public class LightSensor extends Sensor {
 
     public double getValue() { return value; }
 
-
     @Override
     protected SensorControl createSensorControl() {
         return new SensorControl("", "", "",
@@ -35,6 +34,7 @@ public class LightSensor extends Sensor {
 
     @Override
     protected void createGUI() {
-        createSensorWindow("Luz ", "Icon", "lux", 0, 2000, 10, 30);
+        createSensorWindow("Luz", "☀", "lux",
+                0, 2000, 10, 30);
     }
 }
