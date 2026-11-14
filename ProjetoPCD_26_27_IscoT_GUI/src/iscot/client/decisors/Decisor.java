@@ -8,4 +8,7 @@ public class Decisor extends Client {
     public Decisor(String serverAdress, int serverPort, Areas area) {
         super(serverAdress, serverPort, area, Type.DECIDER);
     }
+
+    @Override
+    public void createGUI(){}
 }

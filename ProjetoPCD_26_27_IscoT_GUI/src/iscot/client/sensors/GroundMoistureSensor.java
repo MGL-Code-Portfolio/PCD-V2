@@ -15,7 +15,6 @@ public class GroundMoistureSensor extends Sensor {
 
     public double getHumidity() { return humidity; }
 
-
     @Override
     protected SensorControl createSensorControl() {
         return new SensorControl("", "", "",
@@ -28,13 +27,14 @@ public class GroundMoistureSensor extends Sensor {
     }
 
     @Override
-    protected void onValueChanged(double value) {
-        this.humidity = value;
-        super.onValueChanged(value);
+    protected void onValueChanged(double humidity) {
+        this.humidity = humidity;
+        super.onValueChanged(humidity);
     }
 
     @Override
     protected void createGUI() {
-        createSensorWindow("Humidade do chão: ", "Icon", "lux", 0, 2000, 10, 30);
+        createSensorWindow("Humidade do solo", "\uD83C\uDF31", "%",
+                0, 2000, 10, 30);
     }
 }

@@ -21,7 +21,7 @@ public abstract class Client {
     public Areas getArea() { return area; }
     public Type getType() { return type; }
 
-    protected void createGUI(){}
+    protected abstract void createGUI();
 
     public void start(){
         createGUI();

@@ -6,10 +6,44 @@ import javax.swing.JPanel;
 
 import iscot.client.gui.SensorControl;
 import iscot.enums.Areas;
+import iscot.events.sensor_events.GroundMoistureSensorEvent;
+import iscot.events.sensor_events.HumiditySensorEvent;
+import iscot.events.sensor_events.SensorEvent;
 
 public class HumiditySensor extends Sensor {
+	public double humidity;
 
-	/**
+	public HumiditySensor(String serverAddress, int serverPort, Areas area, double humidity) {
+		super(serverAddress, serverPort, area);
+		this.humidity = humidity;
+	}
+
+	public double getHumidity() { return humidity; }
+
+	@Override
+	protected SensorControl createSensorControl() {
+		return new SensorControl("", "", "",
+				0, 2000, 10, 30,
+				this::onValueChanged);
+	}
+
+	protected SensorEvent createSensorEvent(double value) {
+		return new HumiditySensorEvent(getArea(), value);
+	}
+
+	@Override
+	protected void onValueChanged(double humidity) {
+		this.humidity = humidity;
+		super.onValueChanged(humidity);
+	}
+
+	@Override
+	protected void createGUI() {
+		createSensorWindow("Humidade", "\uD83D\uDCA7", "%",
+				0, 2000, 10, 30);
+	}
+
+	/*
 	 * 
 	 * @param server address and port
 	 * @param roomName: string
@@ -17,7 +51,7 @@ public class HumiditySensor extends Sensor {
 	 * @throws UnknownHostException 
 	 * @throws NumberFormatException 
 	 * @throws InterruptedException 
-	 */
+
 	public static void main(String[] args) throws NumberFormatException, InterruptedException {
 		if(args.length!=3) {
 			System.err.println("Invalid arguments!");
@@ -50,6 +84,6 @@ public class HumiditySensor extends Sensor {
 			janela.setVisible(true);
 			
 		}
-	}
+	}*/
 
 }
