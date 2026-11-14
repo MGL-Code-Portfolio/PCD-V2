@@ -4,7 +4,7 @@ package iscot.client.actuators;
 import javax.swing.JComponent;
 
 import iscot.enums.Areas;
-import iscot.gui.VentilatorIcon;
+import iscot.client.gui.VentilatorIcon;
 
 public class Ventilator extends Actuator {
 
